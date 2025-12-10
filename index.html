@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Right2Wee - Your right to a quick bathroom break. Keep your PC active during short breaks with smart mouse movement.">
+    <meta name="keywords" content="mouse mover, stay active, teams status, bathroom break, pc active">
+    <meta property="og:title" content="Right2Wee - Your Right to a Quick Bathroom Break">
+    <meta property="og:description" content="Because nature calls, but Teams doesn't care. Keep your status active during quick breaks.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://raul.github.io/right2wee/">
+    <title>Right2Wee - Your Right to a Quick Bathroom Break</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚽</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            opacity: 0.95;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            font-style: italic;
+        }
+
+        .hero {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            margin: 40px 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .problem {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+
+        .problem h2 {
+            color: #856404;
+            margin-bottom: 15px;
+        }
+
+        .solution {
+            background: #d4edda;
+            border-left: 5px solid #28a745;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+
+        .solution h2 {
+            color: #155724;
+            margin-bottom: 15px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 12px;
+            border: 2px solid #e9ecef;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .pricing {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            margin: 40px 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .pricing h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            color: #333;
+        }
+
+        .price-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .price-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .price-card.featured {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .price-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .price-small {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .price-card ul {
+            list-style: none;
+            margin: 25px 0;
+            text-align: left;
+        }
+
+        .price-card li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .price-card li:before {
+            content: "✓ ";
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .warning-box {
+            background: #f8d7da;
+            border: 2px solid #f5c6cb;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .warning-box h3 {
+            color: #721c24;
+            margin-bottom: 15px;
+        }
+
+        .windows-warning {
+            background: #fff;
+            border: 3px solid #ffc107;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 40px 0;
+        }
+
+        .windows-warning h3 {
+            color: #856404;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .steps {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .steps ol {
+            margin-left: 20px;
+        }
+
+        .steps li {
+            padding: 8px 0;
+            font-size: 1.1rem;
+        }
+
+        .coffee-note {
+            background: linear-gradient(135deg, #FFDEE9 0%, #B5FFFC 100%);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 18px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin: 20px 10px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(40, 167, 69, 0.4);
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+            opacity: 0.9;
+        }
+
+        .emoji {
+            font-size: 1.5em;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero, .pricing {
+                padding: 30px 20px;
+            }
+
+            .price-card.featured {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🚽 Right2Wee</h1>
+            <p class="tagline">Your Right to a Quick Bathroom Break</p>
+            <p class="subtitle">Because nature calls, but Teams doesn't care</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="hero">
+            <div class="problem">
+                <h2>🤦 The Problem We All Know Too Well</h2>
+                <p>You've been on back-to-back calls for 3 hours. Your bladder is sending urgent messages. You need <em>just 2 minutes</em> for a quick bathroom break.</p>
+                <p style="margin-top: 15px;">But wait! If you step away, your status turns to "Away" in 30 seconds. Your boss notices. Your colleagues see. That one person who always messages at the worst time... <strong>will message</strong>.</p>
+                <p style="margin-top: 15px; font-weight: bold;">Is asking for a basic human right too much? Apparently, yes.</p>
+            </div>
+
+            <div class="solution">
+                <h2>✨ The Solution: Right2Wee</h2>
+                <p>I built this because <strong>I lived this</strong>. Every. Single. Day.</p>
+                <p style="margin-top: 15px;">Right2Wee keeps your PC active while you take care of business. It's that simple. No guilt, no awkward status changes, no questions asked.</p>
+                <p style="margin-top: 15px; font-style: italic;">Your bladder will thank you. Your dignity remains intact. Your status stays "Available".</p>
+            </div>
+
+            <h2 style="margin: 40px 0 30px 0; text-align: center; font-size: 2rem;">How It Works</h2>
+
+            <div class="features">
+                <div class="feature-card">
+                    <h3>🖱️ Smart Mouse Movement</h3>
+                    <p>Moves your mouse pointer every few seconds and performs occasional clicks. Looks like you're actively working.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>🎯 Zero Configuration</h3>
+                    <p>Download, double-click, done. No installation, no registry mess, no complicated setup. It just works.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>🧹 Insanely Clean</h3>
+                    <p>Lives in one folder. Deletes cleanly by just removing that folder. No traces, no leftovers, no digital breadcrumbs.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>🛑 Auto-Stop</h3>
+                    <p>Back from your break? Just move your mouse. Right2Wee detects it and stops automatically. Smart, right?</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>🙈 Stealth Mode</h3>
+                    <p>Minimize it and keep Outlook/Teams on top. Perfect cover. Nobody knows anything.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>✅ Try Before You Buy</h3>
+                    <p>FREE version gives you 2 minutes - exactly the same functionality. Test if it works for you. No credit card, no tricks.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="pricing">
+            <h2>Choose Your Freedom Level</h2>
+
+            <div class="coffee-note">
+                <p><strong>Full transparency:</strong> I'm not paying $100+/year for a code signing certificate when this costs less than a coffee. That's why Windows will complain. But hey, you're smart enough to click "Run anyway", right? 😉</p>
+            </div>
+
+            <div class="price-cards">
+                <div class="price-card">
+                    <h3>FREE</h3>
+                    <div class="price">$0</div>
+                    <p class="price-small">2 minutes of freedom</p>
+                    <ul>
+                        <li>Full functionality</li>
+                        <li>Auto-stop on mouse movement</li>
+                        <li>Clean uninstall</li>
+                        <li>Perfect for quick bathroom breaks</li>
+                        <li>Test if it works on your system</li>
+                    </ul>
+                    <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.9;">Use this first! If it works, the paid versions will too.</p>
+                </div>
+
+                <div class="price-card">
+                    <h3>BASIC</h3>
+                    <div class="price">~$1</div>
+                    <p class="price-small">8 minutes of freedom</p>
+                    <ul>
+                        <li>Everything in FREE</li>
+                        <li>8 minutes runtime</li>
+                        <li>Longer coffee breaks</li>
+                        <li>Quick lunch runs</li>
+                        <li>Extended meetings coverage</li>
+                    </ul>
+                    <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.9;">Less than a coffee. Your bladder is worth it.</p>
+                </div>
+
+                <div class="price-card featured">
+                    <h3>PREMIUM</h3>
+                    <div class="price">~$3</div>
+                    <p class="price-small">Unlimited freedom</p>
+                    <ul>
+                        <li>Everything in BASIC</li>
+                        <li>Unlimited runtime</li>
+                        <li>Fully customizable settings</li>
+                        <li>Adjust movement patterns</li>
+                        <li>Configure click frequency</li>
+                        <li>True peace of mind</li>
+                    </ul>
+                    <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.9;">For the professionals who value their time.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero">
+            <div class="windows-warning">
+                <h3>⚠️ "Windows Protected Your PC" - Yeah, We Know</h3>
+                <p style="margin-bottom: 20px;">When you download <code>right2wee.exe</code>, Windows will show this scary message:</p>
+
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; font-family: monospace; margin: 20px 0;">
+                    Windows protected your PC<br>
+                    Microsoft Defender SmartScreen prevented an unrecognized app from starting.
+                </div>
+
+                <p style="margin: 20px 0;"><strong>This is completely normal.</strong> Here's why:</p>
+
+                <ul style="margin: 20px 0; line-height: 1.8;">
+                    <li>Code signing certificates cost $100-400 per year</li>
+                    <li>This app costs around $1</li>
+                    <li>Math doesn't math 🤷</li>
+                    <li>I'd rather keep it affordable than charge you for a fancy certificate</li>
+                </ul>
+
+                <div class="steps">
+                    <p style="font-weight: bold; margin-bottom: 15px;">How to run Right2Wee:</p>
+                    <ol>
+                        <li>Click <strong>"More info"</strong></li>
+                        <li>Click <strong>"Run anyway"</strong></li>
+                        <li>Enjoy your bathroom break 🚽</li>
+                    </ol>
+                </div>
+
+                <p style="margin-top: 20px; font-style: italic;">Right2Wee is safe. No data collection, no shady connections, just mouse movements. Your antivirus can verify this.</p>
+            </div>
+
+            <div class="warning-box">
+                <h3>⚠️ Important Disclaimer</h3>
+                <p style="line-height: 1.8;">This tool is for <strong>your convenience</strong>. Use it responsibly. I built it to solve a real problem (my bladder vs my boss), but how you use it is entirely your responsibility.</p>
+                <p style="margin-top: 15px; font-weight: bold;">Warning: May become as addictive as sugar. Use in moderation.</p>
+            </div>
+
+            <h2 style="margin: 40px 0 20px 0; text-align: center;">Why Right2Wee is Different</h2>
+            <ul style="line-height: 2; margin: 20px 0;">
+                <li><span class="emoji">🎯</span> <strong>Built by someone who needed it</strong> - This isn't some corporate solution. I built this because I was tired of holding it in.</li>
+                <li><span class="emoji">💪</span> <strong>Honest pricing</strong> - No subscriptions, no hidden fees. Pay once, use forever.</li>
+                <li><span class="emoji">🧼</span> <strong>Respect for your system</strong> - No installation, no registry changes, no admin rights needed.</li>
+                <li><span class="emoji">🔒</span> <strong>Zero data collection</strong> - What happens on your PC stays on your PC.</li>
+                <li><span class="emoji">☕</span> <strong>Cheaper than coffee</strong> - And arguably more useful for your productivity (and comfort).</li>
+            </ul>
+        </div>
+
+        <div class="cta-section">
+            <h2 style="font-size: 2.5rem; margin-bottom: 30px; color: white;">Ready to Reclaim Your Rights?</h2>
+            <a href="https://app.licenflow.com" class="cta-button">Get Your License</a>
+            <a href="https://licenflow.com/downloads/right2wee/right2wee.exe" class="cta-button" style="background: #667eea;">Download Free Version</a>
+            <p style="margin-top: 30px; color: white; font-size: 1.1rem;">Start with FREE. If it works, upgrade. Simple.</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p style="font-size: 1.1rem; margin-bottom: 10px;">Right2Wee - Because bathroom breaks are a human right, not a privilege.</p>
+            <p style="font-size: 0.9rem; opacity: 0.8;">Made with frustration and coffee by someone who really needed to pee during meetings.</p>
+            <p style="margin-top: 20px; font-size: 0.9rem;">
+                Support: <a href="https://licenflow.com" style="color: white; text-decoration: underline;">licenflow.com</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
